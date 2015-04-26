@@ -44,4 +44,4 @@ Here are some recommendations that I would do if I had more time
 - More validation is required on Form input.
 - Add Unit and Integration tests using phpUnit and behat. I would especially write unit tests to test the PackageItemsProcessors class.
 - Store all the javascript and bootstrap assets on a local CDN Server.
-- Verify business logic as the evenly distributed isn't working for all combinations.
+- Verify business logic as the evenly distributed can come up with multiple combinations for certain set of selected items.
