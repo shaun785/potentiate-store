@@ -6,7 +6,7 @@
  * Used to store items into different packages
  * Rules 
  *   1) Total Price of Package cannot exceede $250
- *   2) Total Weight must be even distributed
+ *   2) Total Weight must be evenly distributed
  *
  * @package Store
  * @author Shaunak Deshmukh
