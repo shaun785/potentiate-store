@@ -22,7 +22,7 @@ class PackageItemsProcessor {
 
 	public function __construct(Array $items) {
 		$this->items 	   = $items;
-		$this->packages    = array(); //initialise with one package
+		$this->packages    = array();
 		$this->sortItemsByWeight();		
 	}
 
