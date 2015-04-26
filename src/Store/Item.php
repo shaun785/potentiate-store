@@ -22,7 +22,7 @@ class Item {
 	}
 
 	/*
-	* Set's item name
+	* Set item name
 	* @param String $name
 	* @return void
 	*/
@@ -31,7 +31,7 @@ class Item {
 	}
 
 	/*
-	* Set's item price
+	* Set item price
 	* @param Float $price
 	* @return void
 	*/
@@ -40,7 +40,7 @@ class Item {
 	}
 
 	/*
-	* Set's item weight
+	* Set item weight
 	* @param Float $weight
 	* @return void
 	*/
