@@ -37,6 +37,7 @@ class PackageItemsProcessor {
 
 		$this->initPackages($totalPackages);
 
+
 		//used to determine how evenly the total weight must be split
 		$totalWeight = $this->getTotalWeight();
 		$weightSplit = $totalWeight/count($this->packages); 
@@ -75,7 +76,11 @@ class PackageItemsProcessor {
 				$packageKey = key($potentials);
 
 				$this->packages[$packageKey]->addItem($item);
-			}
+			} else { //if no potentials found, add it to a new PAckage
+				$package = new Package();
+				$package->addItem($item);
+				$this->packages[] = $package;
+			}			
 		}
 
 		return $this->packages;
@@ -108,7 +113,7 @@ class PackageItemsProcessor {
 				return 1;
 		});		
 	}
-
+ 
 	/*
 	* This method will return the number of packages required to package these items
 	* @return int totalPackages 
