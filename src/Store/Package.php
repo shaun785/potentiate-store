@@ -26,14 +26,27 @@ class Package {
 		$this->items 		= array();
 	}
 
+	/*
+	* Adds items to a package
+	* @param Item $item 
+	* @return void
+	*/
 	public function addItem(Item $item) {
 		$this->items[] = $item;
 	}
 
+	/*
+	* Returns items
+	* @return Array items
+	*/
 	public function getItems() {
 		return $this->items;
 	}
 
+	/*
+	* Returns total price of all items in a package
+	* @return int totalPrice
+	*/
 	public function getTotalPrice() {
 		$totalPrice = array_reduce($this->items, function($total, $current) {
 			$total += $current->getPrice();
@@ -43,6 +56,10 @@ class Package {
 		return $totalPrice;
 	}
 
+	/*
+	* Returns total weight of all items in a package
+	* @return int totalWeight
+	*/
 	public function getTotalWeight() {
 		$totalWeight = array_reduce($this->items, function($total, $current) {
 			$total += $current->getWeight();
@@ -53,6 +70,11 @@ class Package {
 		return $totalWeight;
 	}
 
+	/*
+	* Returns whether the passed item can be added to this package
+	* @param Item $testItem
+	* @return boolean
+	*/
 	public function canAddNewItem(Item $testItem) {
 		$price = $this->getTotalPrice() + $testItem->getPrice();
 		if($price > self::MAX_TOTAL_PRICE) {
@@ -62,6 +84,10 @@ class Package {
 		return true;
 	}
 
+	/*
+	* Returns courier charges
+	* @return int Price
+	*/
 	public function getCourierCharges() {
 		$totalWeight = $this->getTotalWeight();
 

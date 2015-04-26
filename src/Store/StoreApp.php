@@ -1,7 +1,18 @@
 <?php 
-
+/**
+ * Store App
+ *
+ * Application class
+ *
+ * @package Store
+ * @author Shaunak Deshmukh
+ * @since 26/04/2015
+ */
 class StoreApp 
 {
+	/*
+	* Application class
+	*/
 	public function main() {
 		$args 	= array();
 
@@ -15,8 +26,8 @@ class StoreApp
 				$selectedItems = $_POST['items']['id'];				
 
 				$args['selectedItems'] = $selectedItems;
-					
-				$items = $this->getItems($selectedItems);
+
+				$items = $this->getItems($selectedItems); //get selected items
 
 				if($items) {
 					$processor = new PackageItemsProcessor($items);
@@ -33,6 +44,11 @@ class StoreApp
 		$page->createPage($args);
 	}
 
+	/*
+	* Returns whether the passed item can be ad
+	* @param Item $testItem
+	* @return boolean
+	*/
 	public function getItems($selectedItems) {				
 		$data 	= getItemsFromCSV();
 		$items  = array();

@@ -1,4 +1,13 @@
 <?php 
+/**
+ * StoreApp Page 
+ *
+ * Page class - used to output html using Twig
+ *
+ * @package Store
+ * @author Shaunak Deshmukh
+ * @since 26/04/2015
+ */
 
 class StoreAppPage {
 

@@ -61,7 +61,7 @@
                   {% endfor %}
                 </div> 
                 <div class="col-md-2">
-                  Total Weight - {{ package.getTotalWeight }}g
+                  Total Weight - {{ package.getTotalWeight|number_format(2, '.', ',') }}g
                 </div>  
                 <div class="col-md-2">
                   Total Price - ${{ package.getTotalPrice|number_format(2, '.', ',')  }}
@@ -93,7 +93,7 @@
                 ${{ item.Price|number_format(2, '.', ',') }}
               </td>
               <td data-weight="{{ item.Weight }}">
-                {{ item.Weight }}
+                {{ item.Weight|number_format(2, '.', ',') }}g
               </td>
             </tr>
           {% endfor %} 

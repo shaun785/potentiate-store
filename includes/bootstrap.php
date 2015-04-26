@@ -19,7 +19,7 @@ function classloader($className){
 spl_autoload_register('classloader');
 
 function handleErrors($e) {
-
+	//log your errors to logging server
 }
 
 function handleExceptions($e){

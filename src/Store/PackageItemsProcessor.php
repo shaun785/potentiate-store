@@ -28,20 +28,23 @@ class PackageItemsProcessor {
 
 	/*
 	* This method will process items into different packages
+	* Logic used is as follows 
 	* @return Array packages 
 	*/
 	public function processPackages() {
-		$totalPackages = $this->getTotalPackages(); //get the total no. of packages needed for this order, by Price constraint
+		//get the total no. of packages needed for this order, by Price constraint
+		$totalPackages = $this->getTotalPackages(); 
 
 		$this->initPackages($totalPackages);
 
+		//used to determine how evenly the weight must be split
 		$totalWeight = $this->getTotalWeight();
-
-		$weightSplit = $totalWeight/count($this->packages); //used to determine how evenly the weight must be split
+		$weightSplit = $totalWeight/count($this->packages); 
 
 		foreach($this->items as $key => $item) {
 			foreach($this->packages as $package) {
-				if($package->canAddNewItem($item) && ($package->getTotalWeight() + $item->getWeight()) <= $weightSplit) { //
+				//only add an item to a package if it fits the price constraint and is less than the weight split (to keep the package weights even)
+				if($package->canAddNewItem($item) && ($package->getTotalWeight() + $item->getWeight()) <= $weightSplit) { 
 					$package->addItem($item);					
 					unset($this->items[$key]);
 					break;
@@ -63,7 +66,7 @@ class PackageItemsProcessor {
 	}
 
 	/*
-	* This method will initialise package object to an array
+	* This method will initialise package object and add it to an array
 	* @param int totalPackages the number of packages to initialise
 	* @return void 
 	*/
@@ -107,7 +110,7 @@ class PackageItemsProcessor {
 	}
 
 	/*
-	* This method will return the total weight of the items 
+	* This method will return the total weight of all items 
 	* @return int totalWeight 
 	*/	
 	protected function getTotalWeight() {
