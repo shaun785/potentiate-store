@@ -37,7 +37,7 @@ class PackageItemsProcessor {
 
 		$this->initPackages($totalPackages);
 
-		//used to determine how evenly the weight must be split
+		//used to determine how evenly the total weight must be split
 		$totalWeight = $this->getTotalWeight();
 		$weightSplit = $totalWeight/count($this->packages); 
 
@@ -52,13 +52,29 @@ class PackageItemsProcessor {
 			}
 		}
 
-		//any remaining items that didn't fit because of even weight distribution will be added to packages based on the price constraint 
+		//any remaining items that didn't fit because of even weight distribution will be added to packages based on the price constraints
 		foreach($this->items as $key => $item) {
-			foreach($this->packages as $package) {
+			$potentials = array();
+			foreach($this->packages as $packageKey => $package) { //get all the potential packages this item can be added to
 				if($package->canAddNewItem($item)) {
-					$package->addItem($item);					
-					break;
+
+					$potentials[$packageKey] = $package;
 				}
+			} 
+
+			if($potentials) { //get the package with the minimum weight
+				uasort($potentials, function($a, $b) { 
+					if($a->getTotalWeight() < $b->getTotalWeight())
+						return -1;
+					else if($a->getTotalWeight() == $b->getTotalWeight() && $a->getTotalPrice() < $b->getTotalPrice())
+						return -1;
+					else 
+						return 1;
+				});
+
+				$packageKey = key($potentials);
+
+				$this->packages[$packageKey]->addItem($item);
 			}
 		}
 
