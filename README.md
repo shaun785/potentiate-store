@@ -28,7 +28,6 @@ Latest Stable Version - 1.0.0
 
     <Directory "/opt/web/potentiate-store/web">
         AllowOverride None
-#        Allow from All
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteRule ^(.*)$ index.php [QSA,L]
