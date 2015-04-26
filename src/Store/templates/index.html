@@ -39,7 +39,7 @@
       </div>
     </nav>
     <div class="container" style="min-height: 600px;">      
-      <h2>Potentiate Store - Place your order</h2> <br />
+      <h2>Potentiate Store - {% if packages|length > 0  %} Your order has been placed {% else %} Place your order {% endif %}</h2> <br />
       {% if error  %}      
         <div class="alert alert-danger">
         {{ error }}

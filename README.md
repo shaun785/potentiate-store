@@ -44,3 +44,4 @@ Here are some recommendations that I would do if I had more time
 1) Store Items data in a database, which means each item will have an unique id. This will make the application more robust.
 2) More validation is required on Form input.
 3) Add Unit and Integration tests using phpUnit and behat. I would especially write unit tests to test the PackageItemsProcessors class.
+4) Store all the javascript and bootstrap assets on a local CDN Server.
