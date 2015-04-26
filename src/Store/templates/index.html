@@ -40,7 +40,12 @@
     </nav>
     <div class="container" style="min-height: 600px;">      
       <h2>Potentiate Store - Place your order</h2> <br />
-      
+      {% if error  %}      
+        <div class="alert alert-danger">
+        {{ error }}
+        </div>
+      {% endif %}
+
       {% if packages|length > 0  %}
         <div class="alert alert-info">
           {% for package in packages %}
@@ -59,7 +64,7 @@
                   Total Weight - {{ package.getTotalWeight }}g
                 </div>  
                 <div class="col-md-2">
-                  Total Price - ${{ package.getTotalPrice }}
+                  Total Price - ${{ package.getTotalPrice|number_format(2, '.', ',')  }}
                 </div>   
                 <div class="col-md-2">
                   Courier Charges - ${{ package.getCourierCharges }}
@@ -84,8 +89,8 @@
               <td data-weight="{{ item.Name }}">
                 {{ item.Name }}
               </td>
-              <td data-weight="{{ item.Price }}">
-                ${{ item.Price }}
+              <td data-weight="{{ item.Price  }}">
+                ${{ item.Price|number_format(2, '.', ',') }}
               </td>
               <td data-weight="{{ item.Weight }}">
                 {{ item.Weight }}
