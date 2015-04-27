@@ -10,9 +10,6 @@
  */
 class StoreApp 
 {
-	/*
-	* Application class
-	*/
 	public function main() {
 		$args 	= array();
 
@@ -45,7 +42,7 @@ class StoreApp
 	}
 
 	/*
-	* Returns whether the passed item can be ad
+	* Returns items
 	* @param Item $testItem
 	* @return boolean
 	*/
